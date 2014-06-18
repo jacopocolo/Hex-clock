@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)http://www.jacopocolo.com/hexclock/ -->
+<html lang="en"><!--
+My coding philosophy
+__          ___    _       _______ ________      ________ _____   __          ______  _____  _  __ _____ 
+\ \        / / |  | |   /\|__   __|  ____\ \    / /  ____|  __ \  \ \        / / __ \|  __ \| |/ // ____|
+ \ \  /\  / /| |__| |  /  \  | |  | |__   \ \  / /| |__  | |__) |  \ \  /\  / / |  | | |__) | ' /| (___  
+  \ \/  \/ / |  __  | / /\ \ | |  |  __|   \ \/ / |  __| |  _  /    \ \/  \/ /| |  | |  _  /|  <  \___ \ 
+   \  /\  /  | |  | |/ ____ \| |  | |____   \  /  | |____| | \ \     \  /\  / | |__| | | \ \| . \ ____) |
+    \/  \/   |_|  |_/_/    \_\_|  |______|   \/   |______|_|  \_\     \/  \/   \____/|_|  \_\_|\_\_____/ 
+--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, user-scalable=yes">
+<title>Hex clock</title>
+<link rel="shortcut icon" href="http://www.jacopocolo.com/favicon.ico" type="image/x-icon">
+<meta name="Keywords" content="Jacopo Colò, Jacopo Colo, hex, clock, hexadecimal, colors">
+<meta name="description" content="A precise hexadecimal color clock that goes the whole 24 hours color range, from #000000 to #235959.">
+<script src="./Hex clock_files/jquery-latest.js"></script>
+<link href="./Hex clock_files/css" rel="stylesheet" type="text/css">
+<meta property="og:image" content="http://www.jacopocolo.com/hexclock/preview.jpg">
+<style>
+html body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+.background {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	vertical-align: middle;
+}
+
+#hex {
+	color: white;
+	font-family: 'Lato', Helvetiva, Arial, sans-serif;
+	text-align: center;
+	font-size: 4.5em;
+	display: block;
+	min-width: 200px;
+	font-weight: 100;
+}
+
+#what {
+	color: rgba(255, 255, 255, 0.90);
+	font-family: 'Lato', Helvetica, Arial, sans-serif;
+	display: block;
+	font-size: 0.9em;
+	position: absolute;
+	bottom: 0px;
+	left: 10px;
+	padding-right: 10px;
+	font-weight: 300;
+}
+
+#what a {
+	color: inherit;
+}
+
+#question {
+	text-decoration: none;
+}
+
+.absolute-center {
+	/*width: 50%;*/
+  	margin: auto;
+  	position: absolute;
+  	top: 50%; left: 50%;
+  	-webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+
+</style>
+</head><style type="text/css">embed[type*="application/x-shockwave-flash"],embed[src*=".swf"],object[type*="application/x-shockwave-flash"],object[codetype*="application/x-shockwave-flash"],object[src*=".swf"],object[codebase*="swflash.cab"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid*="d27cdb6e-ae6d-11cf-96b8-444553540000"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"]{	display: none !important;}</style>
+<body>
+<div class="background" style="background-color: rgb(19, 7, 24);">
+<div class="absolute-center">
+<p id="hex">#130718</p>
+</div>
+<p id="what"><a id="question" href="http://www.jacopocolo.com/hexclock/#" onclick="$(&#39;#explanation&#39;).fadeIn();">What is this?</a><span id="explanation" style="display: none;"> A precise <a href="http://en.wikipedia.org/wiki/Web_colors#Hex_triplet" target="_blank">hexadecimal color</a> clock. It goes the whole 24 hours color range, from #000000 to #235959. Yes, it's always very dark. For a more beautiful color clock, visit <a href="http://thecolourclock.co.uk/" target="_blank">the colour clock</a>.</span></p>
+</div>
+
+<script>
+function refreshData()
+{
+    x = 1;  // x = seconds
+ 	var d = new Date()
+ 	var h = d.getHours();
+ 	var m = d.getMinutes();
+ 	var s = d.getSeconds();
+ 	
+ 	if (h<=9) {h = '0'+h};
+ 	if (m<=9) {m = '0'+m};
+	if (s<=9) {s = '0'+s};
+	
+ 	var	color = '#'+h+m+s;
+ 	
+    $("div.background").css("background-color", color );
+    $("p#hex").text(color);
+     
+    setTimeout(refreshData, x*1000);
+}
+  
+refreshData(); // execute function
+</script>
+<iframe id="rdbIndicator" width="100%" height="270" border="0" src="./Hex clock_files/indicator.html" style="display: none; border: 0; position: fixed; left: 0; top: 0; z-index: 2147483647"></iframe></body></html>

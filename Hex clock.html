@@ -15,8 +15,12 @@ __          ___    _       _______ ________      ________ _____   __          __
 <link rel="shortcut icon" href="http://www.jacopocolo.com/favicon.ico" type="image/x-icon">
 <meta name="Keywords" content="Jacopo Colò, Jacopo Colo, hex, clock, hexadecimal, colors">
 <meta name="description" content="A precise hexadecimal color clock that goes the whole 24 hours color range, from #000000 to #235959.">
-<script src="./Hex clock_files/jquery-latest.js"></script>
-<link href="./Hex clock_files/css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#000000">
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Lato:100,300" rel="stylesheet" type="text/css">
 <meta property="og:image" content="http://www.jacopocolo.com/hexclock/preview.jpg">
 <style>
 html body {
@@ -97,6 +101,8 @@ function refreshData()
 	
  	var	color = '#'+h+m+s;
  	
+    $('meta[name=theme-color]').remove();
+    $('head').append( '<meta name="theme-color" content="'+color+'">' );
     $("div.background").css("background-color", color );
     $("p#hex").text(color);
      
